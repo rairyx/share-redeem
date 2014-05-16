@@ -1,0 +1,76 @@
+:q
+:q
+q
+
+
+from models import Models,Base
+import datetime
+
+@Models.register
+
+
+"""
+user sharing profile
+signed_days are updated through signed up, shared_times through access from shared pages, and are cleaned to zero when new round starts   
+
+"""
+class UserProfile(Base):
+    __collection__ = 'user_profile'
+    
+    structure = {
+        
+        'user_phone'       : unicode,
+         'business_id'     : unicode,
+         'signedup_days'   : int,   
+         'shared_times'   : int,
+    }
+    
+    default_values = { 
+        'user_phone'  : u'',
+         'signedup_days' : 0,
+         'shared_times': 0  
+    }
+   
+
+"""
+""" 
+class Business(Base):
+   __collection__ = 'business'
+  
+   structure = {
+     'title' : unicode,
+   }
+    
+
+"""
+¡°¡±¡°
+
+class Sharing(Base):
+    __collection__ = 'sharing'
+    
+    structure = {
+      'business_id': unicode,
+      'referer': unicode,
+     'referer_url'  : unicode,
+     'referer_platform': int, 
+     'access_time'    : datetime.datetime,
+      'user_agent' : unicode,
+       'ip' : unicode
+   }
+
+
+"""
+Redeeming prize
+
+"""
+class prize_redeem(Base):
+     __collection__ = 'redeem'
+     structure = {
+      'user_phone' : unicode,
+       'date': datetime.datetime,
+        'prize': unicode,
+        'type': int
+   }
+        
+
+q

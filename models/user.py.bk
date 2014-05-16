@@ -1,0 +1,46 @@
+from models import Models,Base
+import datetime
+
+@Models.register
+class User(Base):
+    __collection__ = 'user'
+    
+    structure = {
+        'user_name'       : unicode,
+        'user_phone'       : unicode,
+        'signedup_days'   : int,   
+         'shared_times'   : int,
+        'platform_userid' : unicode,
+        'platform_type'   : int,
+        'created'         : int,
+    }
+    
+    default_values = { 
+        'user_name'  : u'',
+         'signedup_days' : 0,
+         'shared_times': 0  
+    }
+    
+
+
+class Sharing(Base):
+    __collection__ = 'sharing'
+    
+    structure = {
+     'referer': unicode,
+     'referer_url'  : unicode,
+      'time'    : datetime.datetime,
+      'user_agent' : unicode,
+       'ip' : unicode
+   }
+
+class prize_redeem(Base):
+     __collection__ = 'redeem'
+     structure = {
+      'user_phone' : unicode,
+       'date': datetime.datetime,
+        'prize': unicode,
+        'type': int
+   }
+        
+
